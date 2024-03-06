@@ -4,7 +4,7 @@ class CartePizzeria:
         self.pizzas = []
     
     def is_empty(self):
-        if self.nb_pizzas == 0:
+        if len(self.pizzas) == 0:
             return True
         return False
     
@@ -16,10 +16,10 @@ class CartePizzeria:
     
     def remove_pizza(self, name):
         for pizza in self.pizzas:
-            if pizza.name == name:
+            if pizza.nom == name:
                 self.pizzas.remove(pizza)
-                break
-        raise CartePizzeriaException("Pizza n'existe pas")
+                return
+        raise CartePizzeriaException(f"Pizza {name} n'existe pas")
 
 class CartePizzeriaException(Exception):
     def __init__(self, message):
